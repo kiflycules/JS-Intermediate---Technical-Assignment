@@ -1,9 +1,9 @@
 // soal - 01
 
-export function sayHallo(){
+export default function sayHallo(){
     console.log("Hello")
 }
 
 export function greeting(name){
-    alert(`Hello + ${name}`);
+    alert(`Hello  ${name}`);
 }

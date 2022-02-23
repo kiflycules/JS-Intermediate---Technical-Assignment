@@ -38,9 +38,11 @@
       <button type="submit">submit</button>
     </form>
 
-    <script>
+    <script type="module">
       // IMPORT HERE
-      import  {sayHello} from sayHello;
+      import sayHello from "./06-module-helpers.js";
+      import {greeting} from "./06-module-helpers.js";
+      import validateLoginData from "./06-modules-authentication.js"
 
       const elFormGreeting = document.querySelector("#form-greeting");
       const elFormLogin = document.querySelector("#form-login");
@@ -51,15 +53,32 @@
 
       // EDIT HERE
       sayHello();
-      elFormGreeting.onsubmit =function (e){
-          e.preventDefault();
-          Greeting(elInputName.value);
-      }
-      elFormLogin.onsubmit = function (e){
-          e.preventDefault();
-          Greeting(elInputEmail.value, elInputPassword.value);
-      }
 
+      elFormGreeting.addEventListener("submit", function(event) {
+          event.preventDefault()
+          console.log("fungtion Listener submit dipanggil")
+
+          const name = elInputName.value
+          const message = greeting (name) 
+
+          console.log(elInputName.value)
+      });  
+
+      elFormLogin.addEventListener("submit", function(event){
+        event.preventDefault()
+        console.log(" function Listener submit email dan passwor di panggil")
+
+        const email = elInputEmail.value
+        const password = elInputPassword.value
+        const message = validateLoginData(email, password)
+
+        console.log(elInputEmail.value)
+        console.log(elInputPassword.value)
+        alert(message)
+      });
+      
+      
+      
     </script>
   </body>
 </html>
