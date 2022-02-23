@@ -7,4 +7,5 @@ jawab :
 	Cookies adalah kumpulan data yang diterima komputer dari sebuah situs yang dikirimkan kembali ke situs yang dikunjungi. Cookie sendiri adalah istilah untuk kumpulan informasi yang berisi rekam jejak dan aktivitas ketik menelusuri sebuah website.
 3. Apa perbedaan antara localStorage dan sessionStorage? 
 jawab :
-	sessionStorage hanya tersedia selama sesi browser, dihapus ketika tab atau jendela terkait ditutup.
+	--> sessionStorage hanya tersedia selama sesi browser, dihapus ketika tab atau jendela terkait ditutup.
+	--> localStorage memungkinkan kita untuk menyimpan data di web browser tanpa kehilangan data tersebut meskipun web browsenya ditutup.
