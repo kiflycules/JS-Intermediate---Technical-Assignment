@@ -24,6 +24,7 @@ Arahkan ke “Debug” atau “Alat.” Pilih “Opsi,” diikuti dengan “Debu
 Setelah debugger berhenti di breakpoint, Anda dapat memeriksa kondisi aplikasi saat ini. Data yang dapat Anda lihat mencakup tumpukan panggilan dan nilai variabel.
 
 4. Apa yang dapat kita gunakan untuk memanipulasi tata letak suatu element dalam bidang 1 dimensi?
-    - 
+    - Deklarasikan elemen UI dalam XML
 
 5. Apa yang dapat kita gunakan untuk memanipulasi tata letak suatu element dalam bidang 2 dimensi?
+    - Buat instance elemen tata letak pada saat runtime.
