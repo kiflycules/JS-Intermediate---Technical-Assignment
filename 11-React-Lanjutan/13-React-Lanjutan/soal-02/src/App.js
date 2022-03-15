@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import CardProduct from "./components/CardProduct";
-import CartListItem from "./components/CardListItem";
+import CartListItem from "../src/components/CartListItem";
 import Navbar from "./components/Navbar";
 
 import menus from "./dummy-data";
