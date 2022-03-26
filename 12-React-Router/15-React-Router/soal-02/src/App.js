@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Router, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Movie from "./pages/Movie";
@@ -8,17 +8,15 @@ import NotFound from "./pages/NotFound";
 export default function App() {
   return (
     <>
-      <BrowserRouter>
-        <Navbar />
-        <div className="container">
-          <Switch>
-            <Route path="*" component={NotFound} />
-            <Route path="/movies/:id" component={Movie} />
-            <Route path="/" component={Home} />
-            <Route path="/movies" component={MovieList} />
-          </Switch>
-        </div>
-      </BrowserRouter>
+      <Navbar />
+      <div className="container">
+        <Routes>
+          <Route path="*" element={<NotFound />} /> {/* Route jika URL path yang dicari tidak ada dan akan menuju component Not Found */}
+          <Route path="/movies/:id" element={<Movie />} /> {/* Route movie dengan id Param yang akan menuju ke halaman pada component pages/Movie */}
+          <Route path="/" element={<Home />} /> {/* Route homepage yang akan menuju ke halaman pada component pages/Home */}
+          <Route path="/movies" element={<MovieList />} /> {/* Route movies yang akan menuju ke halaman pada component pages/MovieList */}
+        </Routes>
+      </div>
     </>
   );
 }

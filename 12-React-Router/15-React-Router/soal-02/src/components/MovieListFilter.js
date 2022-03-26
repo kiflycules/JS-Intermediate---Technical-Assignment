@@ -1,16 +1,29 @@
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
+import QueryString from "qs";
 
 const MovieListFilter = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
   // Variable yang akan menampung parameter yang telah diberikan oleh user
-  const params = {};
+  const params = QueryString.parse(location.search.substring(1));
 
   const shows = [10, 20, 30];
   const categories = ["TV", "Movie"];
   const fields = ["title", "score"];
 
-  const [show, setShow] = useState(shows[0]);
-  const [category, setCategory] = useState(categories[0]);
-  const [sortBy, setSortBy] = useState(fields[0]);
+  const [show, setShow] = useState(params.show || shows[0]);
+  const [category, setCategory] = useState(params.categories || categories[0]);
+  const [sortBy, setSortBy] = useState(params.sort || fields[0]);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    navigate(`/movies/?show=${show}&category=${category}&sort=${sortBy}`, {
+      replace: true,
+    });
+  }
+
   return (
     <div className="col-12 my-5">
       <div className="row align-items-stretch justify-content-center">
@@ -69,7 +82,11 @@ const MovieListFilter = () => {
           </select>
         </div>
         <div className="col-2 row align-items-end">
-          <button id="submit" className="btn btn-outline-success">
+          <button
+            onClick={handleSubmit}
+            id="submit"
+            className="btn btn-outline-success"
+          >
             submit
           </button>
         </div>
