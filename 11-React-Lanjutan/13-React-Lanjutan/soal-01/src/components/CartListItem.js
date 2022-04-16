@@ -1,11 +1,13 @@
+import propTypes from 'prop-types';
+
 const CartListItem = ({ name, price, amount, increase, decrease }) => {
   return (
     <li className="list-group-item d-flex justify-content-between align-items-start">
       <div className="ms-2 me-auto">
         <div className="fw-bold">{name}</div>
-        {new Intl.NumberFormat("en-US", {
-          style: "currency",
-          currency: "USD"
+        {new Intl.NumberFormat('en-US', {
+          style: 'currency',
+          currency: 'USD',
         }).format(price * amount)}
       </div>
       <div>
@@ -21,4 +23,18 @@ const CartListItem = ({ name, price, amount, increase, decrease }) => {
   );
 };
 
+CartListItem.propTypes = {
+  name: propTypes.string,
+  price: propTypes.number,
+  amount: propTypes.number,
+  increase: propTypes.func,
+};
+
+CartListItem.defaulProps = {
+  name: '',
+  price: '',
+  amount: '',
+  increase: () => console.log(''),
+  decrease: () => console.log(''),
+};
 export default CartListItem;

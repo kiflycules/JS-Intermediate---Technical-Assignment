@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 const Navbar = ({ totalItem = 0 }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -5,28 +7,17 @@ const Navbar = ({ totalItem = 0 }) => {
         <a className="navbar-brand" href="#">
           Home Town Cafe
         </a>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
+        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0"></ul>
           <div className="d-flex">
-            <button
-              type="button"
-              className="btn btn-outline-primary position-relative"
-            >
+            <button type="button" className="btn btn-outline-primary position-relative">
               cart
               {totalItem > 0 ? (
                 <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                  {totalItem > 99 ? "99+" : totalItem}
+                  {totalItem > 99 ? '99+' : totalItem}
                   <span className="visually-hidden">unread messages</span>
                 </span>
               ) : null}
@@ -36,6 +27,14 @@ const Navbar = ({ totalItem = 0 }) => {
       </div>
     </nav>
   );
+};
+
+Navbar.propTypes = {
+  purchasedItem: PropTypes.number,
+};
+
+Navbar.defaultProps = {
+  purchasedItem: 0,
 };
 
 export default Navbar;
