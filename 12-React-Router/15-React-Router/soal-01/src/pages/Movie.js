@@ -1,18 +1,12 @@
-import { useEffect } from "react";
-import {useParams} from "react-router-dom";
-import movieData from "../dummy-data";
+import { Redirect, useParams } from "react-router-dom";
+import movies from "../dummy-data";
 
 const Movie = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
-
-  // Variable berikut akan menampung data movie yang akan kita tampilkan
-  const movie = movieData.find((movie) => movie.mal_id == id) || {};
-
-  useEffect(() => {
-    if(!movie.mal_id) navigate("/not-found", {replace:true});
-  }, []);
-
+  const movie = movies.find((o) => o.mal_id === Number(id));
+  if (!movie) {
+    return <Redirect to="/not-found" />;
+  }
   return (
     <div className="row my-5">
       <div className="card mb-3 p-0">
