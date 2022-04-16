@@ -1,28 +1,20 @@
+import qs from "qs";
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
-import QueryString from "qs";
+import { useHistory, useLocation } from "react-router-dom";
 
 const MovieListFilter = () => {
   const location = useLocation();
-  const navigate = useNavigate();
+  const history = useHistory();
 
-  // Variable yang akan menampung parameter yang telah diberikan oleh user
-  const params = QueryString.parse(location.search.substring(1));
+  const params = qs.parse(location.search, { ignoreQueryPrefix: true });
 
   const shows = [10, 20, 30];
   const categories = ["TV", "Movie"];
   const fields = ["title", "score"];
 
   const [show, setShow] = useState(params.show || shows[0]);
-  const [category, setCategory] = useState(params.categories || categories[0]);
+  const [category, setCategory] = useState(params.category || categories[0]);
   const [sortBy, setSortBy] = useState(params.sort || fields[0]);
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    navigate(`/movies/?show=${show}&category=${category}&sort=${sortBy}`, {
-      replace: true,
-    });
-  }
 
   return (
     <div className="col-12 my-5">
@@ -83,9 +75,13 @@ const MovieListFilter = () => {
         </div>
         <div className="col-2 row align-items-end">
           <button
-            onClick={handleSubmit}
             id="submit"
             className="btn btn-outline-success"
+            onClick={() =>
+              history.push(
+                `/movies/?show=${show}&category=${category}&sort=${sortBy}`
+              )
+            }
           >
             submit
           </button>
